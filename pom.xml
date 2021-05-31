@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ru.trytouse</groupId>
+  <artifactId>micronaut</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+
+  <parent>
+    <groupId>io.micronaut</groupId>
+    <artifactId>micronaut-parent</artifactId>
+    <version>2.3.1</version>
+  </parent>
+
+  <modules>
+    <module>micronaut-web</module>
+    <module>micronaut-core</module>
+    <module>micronaut-api</module>
+    <module>micronaut-app</module>
+    <module>micronaut-messaging</module>
+  </modules>
+
+  <name>micronaut</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <micronaut.version>2.3.1</micronaut.version>
+    <micronaut.runtime>netty</micronaut.runtime>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <id>jcenter.bintray.com</id>
+      <url>https://jcenter.bintray.com</url>
+    </repository>
+  </repositories>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Internal deps -->
+      <dependency>
+        <groupId>ru.trytouse</groupId>
+        <artifactId>micronaut-web</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ru.trytouse</groupId>
+        <artifactId>micronaut-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ru.trytouse</groupId>
+        <artifactId>micronaut-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ru.trytouse</groupId>
+        <artifactId>micronaut-messaging</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <!-- END Internal deps -->
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <annotationProcessorPaths combine.children="append">
+            </annotationProcessorPaths>
+            <compilerArgs>
+              <arg>-Amicronaut.processing.group=ru.trytouse</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
